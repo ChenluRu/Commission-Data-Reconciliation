@@ -19,7 +19,7 @@ This project is a software engineer intern take-home assignment at Rem, designed
 ### Prerequisites
 Ensure Python 3.6+ is installed on your system, along with the following Python packages:
 - `pandas`
-- `openpyxl` (for handling Excel files)
+- `openpyxl` 
 
 ### Installation
 1. Clone this repository or download the files directly to your local machine.
@@ -27,9 +27,21 @@ Ensure Python 3.6+ is installed on your system, along with the following Python 
    ```bash
    pip install -r requirements.txt
 
-### Usage Instructions
-   ```bash
-   python main.py
-
-
+## Usage Instructions
+To run the script, navigate to the directory containing `main.py` and execute the following command in the terminal:
+```bash
+python main.py
+    
 ## How It Works
+
+- **Loading Data**: The script begins by loading commission data from specified Excel files for three different carriers using the function `load_data`.
+- **Normalizing Data**: Each row of data is processed to ensure consistent formatting and naming conventions using the function `normalize_data`, which also handles the deduplication of agent names.
+- **Merging Data**: Data from all sources are merged into a single DataFrame to facilitate unified processing.
+- **Filtering Data**: Only data pertaining to June 2024 is filtered and analyzed, aligning with the assignment's focus.
+- **Calculating and Outputting Results**: The script calculates the total commissions per agent and identifies the top performers, saving these results and all processed data into separate CSV files for easy access and review.
+
+## Outputs
+
+- **`Top_Performers_June_2024.csv`**: Lists the top ten agents or agencies based on their commission payouts for June 2024.
+- **`Normalized_Commission_Data.csv`**: Contains the processed and normalized data ready for potential future database integration.
+
