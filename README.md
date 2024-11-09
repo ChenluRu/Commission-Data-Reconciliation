@@ -27,11 +27,11 @@ Ensure Python 3.6+ is installed on your system, along with the following Python 
    ```bash
    pip install -r requirements.txt
 
-## Usage Instructions
+### Usage Instructions
 To run the script, navigate to the directory containing `main.py` and execute the following command in the terminal:
-```bash
-python main.py
-    
+
+	python main.py
+	   
 ## How It Works
 
 - **Loading Data**: The script begins by loading commission data from specified Excel files for three different carriers using the function `load_data`.
