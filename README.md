@@ -5,6 +5,7 @@ This project is a software engineer intern take-home assignment at Rem, designed
 
 ## Features
 - **Data Parsing**: Extract commission data from Excel files.
+- **Data Preprocess**: Filter for rows where the product column contains "Delta Care Corporation"
 - **Data Normalization**: Standardize data into a uniform format for database storage.
 - **Performance Analysis**: Identify top performers based on commission payouts for specific periods.
 - **Output Generation**: Create a CSV file containing normalized commission data.
