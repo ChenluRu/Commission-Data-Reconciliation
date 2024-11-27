@@ -36,6 +36,7 @@ To run the script, navigate to the directory containing `main.py` and execute th
 ## How It Works
 
 - **Loading Data**: The script begins by loading commission data from specified Excel files for three different carriers using the function `load_data`.
+- **Loading Data**: According to this task‘s requirements，using the function filter_for_delta_care to filter the "Delta Care Corporation" producer.
 - **Normalizing Data**: Each row of data is processed to ensure consistent formatting and naming conventions using the function `normalize_data`, which also handles the deduplication of agent names.
 - **Merging Data**: Data from all sources are merged into a single DataFrame to facilitate unified processing.
 - **Filtering Data**: Only data pertaining to June 2024 is filtered and analyzed, aligning with the assignment's focus.
