@@ -8,6 +8,11 @@ def load_data(filepath, date_col):
     df[date_col] = pd.to_datetime(df[date_col]).dt.to_period('M')  # Convert to monthly period
     return df
 
+def filter_for_delta_care(df, product_col):
+    # Filter for rows where the product column contains "Delta Care Corporation"
+    # use .copy() method to create a new DataFrame copy to avoid SettingWithCopyWarning
+    return df[df[product_col].str.contains("Delta Care", case=False, na=False)].copy()
+
 def normalize_agent_name(name):
     # Avoid name duplication.
     parts = name.lower().split()
@@ -41,10 +46,15 @@ def main():
     emblem = load_data('Emblem 06.2024 Commission.xlsx', 'Effective Date')
     healthfirst = load_data('Healthfirst 06.2024 Commission.xlsx', 'Member Effective Date')
 
+    # Filter for Delta Care
+    centene_filtered = filter_for_delta_care(centene, 'Earner Name')
+    emblem_filtered = filter_for_delta_care(emblem, 'Payee Name')
+    healthfirst_filtered = filter_for_delta_care(healthfirst, 'Producer Name')
+
     # Normalize data
-    normalized_centene = normalize_data(centene, 'Writing Broker Name', 'Pay Period', 'Payment Amount', 'Centene')
-    normalized_emblem = normalize_data(emblem, 'Rep Name', 'Effective Date', 'Payment', 'Emblem')
-    normalized_healthfirst = normalize_data(healthfirst, 'Producer Name', 'Member Effective Date', 'Amount', 'Healthfirst')
+    normalized_centene = normalize_data(centene_filtered, 'Writing Broker Name', 'Pay Period', 'Payment Amount', 'Centene')
+    normalized_emblem = normalize_data(emblem_filtered, 'Rep Name', 'Effective Date', 'Payment', 'Emblem')
+    normalized_healthfirst = normalize_data(healthfirst_filtered, 'Member Name', 'Member Effective Date', 'Amount', 'Healthfirst')
 
     # Merge data
     all_commissions = merge_dataframes([normalized_centene, normalized_emblem, normalized_healthfirst])
